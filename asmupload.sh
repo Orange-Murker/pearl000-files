@@ -13,6 +13,12 @@ if [[ "$1" == "help" ]] || [[ "$1" == "" ]] || [[ "$2" == "" ]]; then
 	exit 0
 fi
 
+# Check if specified file exists otherwise send an error 
+if [ ! -f "$2" ]; then
+    echo "-- Aborted due to error ($2 doesn't exist)"
+    exit 0
+fi
+
 # Bash oneliner to get the directory the scripts lives in.
 DIR="$(cd ""$(dirname ""${BASH_SOURCE[0]}"")"" && pwd)"
 
@@ -45,7 +51,7 @@ fi
 # mentioned within the documentation.
 rm "$STRIPPED_FN.eep.hex"
 rm "$STRIPPED_FN.obj"
-rm "$STRIPPED_FN.cof"
+rm -f "$STRIPPED_FN.cof"
 mv "$STRIPPED_FN.hex" "$OUTPUT_FILE"
 
 # Upload our machine code to the Arduino using avrdude
