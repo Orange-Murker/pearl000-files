@@ -45,7 +45,6 @@ fi
 # mentioned within the documentation.
 rm "$STRIPPED_FN.eep.hex"
 rm "$STRIPPED_FN.obj"
-rm "$STRIPPED_FN.cof"
 mv "$STRIPPED_FN.hex" "$OUTPUT_FILE"
 
 # Upload our machine code to the Arduino using avrdude
